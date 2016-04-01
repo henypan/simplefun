@@ -9,5 +9,6 @@ def get_from_local():
             result_set.extend(json.load(data_file)['results'])
     return result_set
 
+
 if __name__ == '__main__':
     print len(get_from_local())

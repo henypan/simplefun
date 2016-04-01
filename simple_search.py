@@ -1,7 +1,3 @@
-#  id -> name
-# search based on name/alias fields
-# when index the data, {id: (name, alias))
-
 from fetch_games import get_from_local
 from collections import defaultdict
 
@@ -30,7 +26,7 @@ for game in data_dump:
         analyzed_game_dict[name].add(game['id'])
     game_dict[game['id']] = (game['name'], game['aliases'] if game['aliases'] else "", game['site_detail_url'])
 history_map = defaultdict(set)
-print analyzed_game_dict['mario']
+
 
 def print_title(game_set):
     print 'Title: ', game_set[0], ' | Site: ', game_set[2]
@@ -43,8 +39,6 @@ def search(search_word):
             for v in history_map[search_word]:
                 print_title(game_dict[v])
             found = True
-
-    # a set of game id.
 
     if not found:
         for k, v in analyzed_game_dict.items():
